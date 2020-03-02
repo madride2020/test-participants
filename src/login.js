@@ -1,45 +1,116 @@
-import React, { Component } from 'react';
-import withFirebaseAuth from 'react-with-firebase-auth'
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
-import firebaseConfig from './firebaseConfig';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+const useStyles = makeStyles({
+  list: {
+    width: 250,
+      background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+  },
+  fullList: {
+    width: 'auto',
 
-class Login extends Component {
-    render() {
-      const {
-        user,
-        signOut,
-        signInWithGoogle,
-      } = this.props;
-      
-      return (
-        <div>
-            {
-              user
-                ? <p>Hello, {user.displayName}</p>
-                : <p>Please sign in.</p>
-            }
-  
-            {
-              user
-                ? <button onClick={signOut}>Sign out</button>
-                : <button onClick={signInWithGoogle}>Sign in with Google</button>
-            }
-        </div>
-      );
+  },
+});
+
+export default function TemporaryDrawer() {
+  const classes = useStyles();
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+
+  });
+
+  const toggleDrawer = (side, open) => event => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
     }
-  }
 
-const firebaseAppAuth = firebaseApp.auth();
+    setState({ ...state, [side]: open });
+  };
 
-const providers = {
-  googleProvider: new firebase.auth.GoogleAuthProvider(),
-};
+  const sideList = side => (
+    <div
+      className={classes.list}
+      role="presentation"
+      onClick={toggleDrawer(side, false)}
+      onKeyDown={toggleDrawer(side, false)}
+    >
+      <List>
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
 
-export default withFirebaseAuth({
-  providers,
-  firebaseAppAuth,
-})(Login);
+  const fullList = side => (
+    <div
+      className={classes.fullList}
+      role="presentation"
+      onClick={toggleDrawer(side, false)}
+      onKeyDown={toggleDrawer(side, false)}
+    >
+      <List>
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
 
+  return (
+    <div>
+      <Button onClick={toggleDrawer('left', true)}>Open Left</Button>
+      <Button onClick={toggleDrawer('right', true)}>Open Right</Button>
+      <Button onClick={toggleDrawer('top', true)}>Open Top</Button>
+      <Button onClick={toggleDrawer('bottom', true)}>Open Bottom</Button>
+      <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
+        {sideList('left')}
+      </Drawer>
+      <Drawer anchor="top" open={state.top} onClose={toggleDrawer('top', false)}>
+        {fullList('top')}
+      </Drawer>
+      <Drawer anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
+        {fullList('bottom')}
+      </Drawer>
+      <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
+        {sideList('right')}
+      </Drawer>
+    </div>
+  );
+}
