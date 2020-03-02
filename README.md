@@ -13,7 +13,7 @@ cual es tu fuerte, bien en javascript, css, html.
 
 puedes clonar el proyecto desde git@github.com:madride2020/test-participants.git
 
-Te dejamos adjunto un index.html que esta configurado en el servidor local y lo puedes ver en localhost:8080
+Te dejamos adjunto un index.html que esta configurado en el servidor local y lo puedes ver en localhost:8080 pero esto solo te va a funcionar en el computador que te proporcionamos, si estas usando tu computador, estonces tendras que configurar tu servidor local.
 
 Tambien tienes instalado visual studio code, para que lo uses con el proyecto.
 
