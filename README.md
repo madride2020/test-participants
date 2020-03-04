@@ -1,8 +1,8 @@
 En las imagenes adjuntas al proyecto tienes dos tipos de modal, el primero que sale desde la casilla del perfil de usuario de la pagina,
 y el segundo un aside al lado derecho de la pagina para la configuración del sitio.
 
-Se requiere hacer uno de los dos diseños, pero no es necesario que los colores, listados de objetos y funcionalidad sean iguales a los de la imagen,
-pero cuanto mas puedas hacerle, podremos evaluar mejor tus cualidades.
+Se requiere hacer los dos diseños, pero no es necesario que los colores, listados de objetos y funcionalidad sean iguales a los de la imagen,
+Cuanto mas puedas hacerle, podremos evaluar mejor tus cualidades.
 
 Puedes usar cualquier framework javascript o libreria css que te venga bien.
 
@@ -11,7 +11,7 @@ cual es tu fuerte, bien en javascript, css, html.
 
 puedes clonar el proyecto desde git@github.com:madride2020/test-participants.git
 
-Te dejamos adjunto un index.html que esta configurado en el servidor local y lo puedes ver en localhost:8080 pero esto solo te va a funcionar en el computador que te proporcionamos, si estas usando tu computador, estonces tendras que configurar tu servidor local.
+Te dejamos adjunto un index.html que esta configurado en el servidor local y lo puedes ver en localhost:8080 pero esto solo te va a funcionar en el computador que te proporcionamos, si estas usando tu computador, entonces tendras que configurar tu servidor local.
 
 Tambien tienes instalado visual studio code, para que lo uses con el proyecto.
 
