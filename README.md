@@ -4,8 +4,6 @@ y el segundo un aside al lado derecho de la pagina para la configuración del si
 Se requiere hacer uno de los dos diseños, pero no es necesario que los colores, listados de objetos y funcionalidad sean iguales a los de la imagen,
 pero cuanto mas puedas hacerle, podremos evaluar mejor tus cualidades.
 
-Tu eliges el que quieras hacer.
-
 Puedes usar cualquier framework javascript o libreria css que te venga bien.
 
 La combinación de colores, posición de objetos lo tomaremos en cuenta, ya que al tratarse de una evaluación de frontend queremos saber 
